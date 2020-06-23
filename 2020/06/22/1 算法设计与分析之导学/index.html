@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Yuling Chen,chenyuling_swu_edu@163.com"><title>1 算法设计与分析之导学 · yuling</title><meta name="description" content="本博文简单介绍了算法的相关概念(包括：算法设计模式、算法性质、描述方式、评价方法等)以及时间复杂度分析。
+1 导学1.1 算法的基本概念算法设计模式：
+
+暴力求解(Brute force)
+分治法(Divide and conquer)
+贪婪算法(Greedy approach)
+动态规划(Back"><meta name="keywords" content="Hexo,Python,JavaScript,HTML,CSS,"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">yuling</a></h3><div class="description"><p>chenyuling_swu_edu@163.com</p></div></div></div><ul class="social-links"><li><a href="http://github.com/boomboomchen" target="_blank" rel="noopener"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>just do it. </span></a><div class="by_farbox"><a href="">Welcome to my blog&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>1 算法设计与分析之导学</a></h3></div><div class="post-content"><p>  本博文简单介绍了算法的相关概念(包括：算法设计模式、算法性质、描述方式、评价方法等)以及时间复杂度分析。</p>
+<h2 id="1-导学"><a href="#1-导学" class="headerlink" title="1 导学"></a>1 导学</h2><h3 id="1-1-算法的基本概念"><a href="#1-1-算法的基本概念" class="headerlink" title="1.1 算法的基本概念"></a>1.1 算法的基本概念</h3><p><strong>算法设计模式：</strong></p>
+<ul>
+<li>暴力求解(Brute force)</li>
+<li>分治法(Divide and conquer)</li>
+<li>贪婪算法(Greedy approach)</li>
+<li>动态规划(Backtracking)</li>
+<li>回溯法(Branch and bound)</li>
+<li>分支界限法(Randomized algorithm)等</li>
+</ul>
+<p><strong>算法</strong>：算法是借助计算机解决问题的方法，是有限条确定性指令的序列</p>
+<p><strong>算法的性质</strong>：输入、输出、确定性、有限性</p>
+<p><strong>算法的描述方式</strong>：自然语言、数学公式、流程图、伪代码、程序设计语言</p>
+<p><strong>算法的评价方法：</strong>正确性、有效性、易理解、易实现、通用性</p>
+<p><strong>例子：最大公约数</strong><br>暴力解法：取min(a,b)，从大到小尝试，直到两个数均可被整除。<br>欧几里得：<code>max%min==0？result=min : result=(max%min和min的最大公约数）</code></p>
+<h3 id="1-2-算法复杂度"><a href="#1-2-算法复杂度" class="headerlink" title="1.2 算法复杂度"></a>1.2 算法复杂度</h3><p><strong>算法复杂度分析的三种情形</strong>：</p>
+<ul>
+<li>最好情形(Best case)</li>
+<li>最差情形(Worst case)</li>
+<li>平均情形(Average case)</li>
+</ul>
+<p>例如：二分查找(Binary search)的时间复杂度，在三种情况依次为Θ(1)、Θ(log<sub>2</sub>n)、Θ(log<sub>2</sub>n)</p>
+<h4 id="1-2-1-时间复杂度"><a href="#1-2-1-时间复杂度" class="headerlink" title="1.2.1 时间复杂度"></a>1.2.1 时间复杂度</h4><p><strong>评价标准：</strong></p>
+<ul>
+<li>运行时间<ul>
+<li>优点：最直接反映</li>
+<li>缺点：机器依赖、缺乏解释</li>
+</ul>
+</li>
+<li>运算次数<ul>
+<li>优点：机器无关、具有解释力</li>
+<li>缺点：统计繁琐、规模较大时关键在于增长量级</li>
+</ul>
+</li>
+<li>增长量级</li>
+</ul>
+<p><strong>近似表示</strong><br><img src="https://github.com/boomboomchen/markdownImages/blob/master/1.1.jpg?raw=true" alt="@图 1.1 上界|center|500x0"><br><img src="https://github.com/boomboomchen/markdownImages/blob/master/1.2.jpg?raw=true" alt="@图 1.2 下界|center|500x0"><br><img src="https://github.com/boomboomchen/markdownImages/blob/master/1.3.jpg?raw=true" alt="@图 1.3 同阶|center|500x0"></p>
+<p><strong>例子：Fibonacci</strong><br>递归算法：O(2<sup>n</sup>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">GetByRecursion</span><span class="params">(<span class="keyword">long</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>||n==<span class="number">2</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> GetByRecursion(n-<span class="number">1</span>)+GetByRecursion(n-<span class="number">2</span>); <span class="comment">//递归调用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>迭代算法：O(n)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">GetByIteration</span><span class="params">(<span class="keyword">long</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> a=<span class="number">1</span>,b=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">long</span> i=<span class="number">3</span>;i&lt;n;i++)&#123;</span><br><span class="line">		<span class="keyword">long</span> temp=a+b;</span><br><span class="line">		a=b;</span><br><span class="line">		b=temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-算法思维"><a href="#1-3-算法思维" class="headerlink" title="1.3 算法思维"></a>1.3 算法思维</h3><p><strong>算法思维：</strong>现实问题——&gt;形式化描述——&gt;设计算法——&gt;方案实施——&gt;现实问题</p>
+<h4 id="1-1-4-例：交通信号灯"><a href="#1-1-4-例：交通信号灯" class="headerlink" title="1.1.4 例：交通信号灯"></a>1.1.4 例：交通信号灯</h4></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-06-22</span><i class="fa fa-tag"></i><a class="tag" href="/tags/algorithm/" title="algorithm">algorithm </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://boomboomchen.github.io/2020/06/22/1 算法设计与分析之导学/,yuling,1 算法设计与分析之导学,;" target="_blank" rel="noopener"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2020/06/22/2%20%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E4%B9%8B%E5%88%86%E6%B2%BB%E6%B3%95%E8%A7%A3%E5%86%B3%E6%B1%89%E8%AF%BA%E5%A1%94%E9%97%AE%E9%A2%98/" title="2 算法设计与分析之分治法解决汉诺塔问题">上一篇</a></li></ul></div><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js?v=undefined"></script><script>var valine = new Valine({
+  el:'#vcomments',
+  notify:false || false, 
+  verify:false|| false, 
+  app_id:'AvFdT82c2CbjAhhwEoGoBEVa-gzGzoHsz# your leancloud appid',
+  app_key:'egmUn2RYgj61d9f7EbGQrX4l',
+  placeholder:'Just go it',
+  path: window.location.pathname,
+  avatar:'wavatar'
+})</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":1}});</script></body></html>
