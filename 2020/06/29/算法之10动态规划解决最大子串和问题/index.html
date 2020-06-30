@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Yuling Chen,chenyuling_swu_edu@163.com"><title>算法之10动态规划解决最大子串和问题 · yuling</title><meta name="description" content="3 动态规划(Dynamic Programming)3.1 算法介绍3.1.1 动态规划特性
+
+问题分阶段：一个问题的求解可以拆分成若干个阶段的子问题
+阶段有依赖：问题的最优解依赖于子阶段问题的最优解
+问题有重复：一个问题的求解过程中，其子问题可能会重复出现
+
+
+3.1.2 表格法
+
+
+特点
+适用"><meta name="keywords" content="Hexo,Python,JavaScript,HTML,CSS,"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 4.2.1"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">yuling</a></h3><div class="description"><p>chenyuling_swu_edu@163.com</p></div></div></div><ul class="social-links"><li><a href="http://github.com/boomboomchen" target="_blank" rel="noopener"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>just do it. </span></a><div class="by_farbox"><a href="">Welcome to my blog&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>算法之10动态规划解决最大子串和问题</a></h3></div><div class="post-content"><h2 id="3-动态规划-Dynamic-Programming"><a href="#3-动态规划-Dynamic-Programming" class="headerlink" title="3 动态规划(Dynamic Programming)"></a>3 动态规划(Dynamic Programming)</h2><h3 id="3-1-算法介绍"><a href="#3-1-算法介绍" class="headerlink" title="3.1 算法介绍"></a>3.1 算法介绍</h3><h4 id="3-1-1-动态规划特性"><a href="#3-1-1-动态规划特性" class="headerlink" title="3.1.1 动态规划特性"></a>3.1.1 动态规划特性</h4><blockquote>
+<ul>
+<li>问题分阶段：一个问题的求解可以拆分成若干个阶段的子问题</li>
+<li>阶段有依赖：问题的最优解依赖于子阶段问题的最优解</li>
+<li>问题有重复：一个问题的求解过程中，其子问题可能会重复出现</li>
+</ul>
+</blockquote>
+<h4 id="3-1-2-表格法"><a href="#3-1-2-表格法" class="headerlink" title="3.1.2 表格法"></a>3.1.2 表格法</h4><table>
+<thead>
+<tr>
+<th align="center">特点</th>
+<th align="center">适用情形</th>
+<th align="center">方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">求出所有解</td>
+<td align="center">要求所有解的情形</td>
+<td align="center">自下而上</td>
+</tr>
+</tbody></table>
+<h4 id="3-1-3-备忘录法"><a href="#3-1-3-备忘录法" class="headerlink" title="3.1.3 备忘录法"></a>3.1.3 备忘录法</h4><table>
+<thead>
+<tr>
+<th align="center">特点</th>
+<th align="center">适用情形</th>
+<th align="center">方向</th>
+<th align="center">实现方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">只求出所需解</td>
+<td align="center">无需求出所有解的情况</td>
+<td align="center">自上而下</td>
+<td align="center">递归</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-最大子串和-Maximum-Subarray"><a href="#3-2-最大子串和-Maximum-Subarray" class="headerlink" title="3.2 最大子串和(Maximum Subarray)"></a>3.2 最大子串和(Maximum Subarray)</h3><h4 id="3-2-1-问题描述"><a href="#3-2-1-问题描述" class="headerlink" title="3.2.1 问题描述"></a>3.2.1 问题描述</h4><p>假设已知未来几天的股票市场价格，规定在这期间只能买卖一次，请问何时买卖才能使获利最大？<br><img src="https://github.com/boomboomchen/markdownImages/blob/master/1.13.jpg?raw=true" alt=""></p>
+<h4 id="3-2-2-算法思路"><a href="#3-2-2-算法思路" class="headerlink" title="3.2.2 算法思路"></a>3.2.2 算法思路</h4><p><strong>整体思路：</strong>假设只有前两天可以买卖，算出一个最大收益，然后继续假设前三天可以买卖，算出最大收益……一直算到最后一天，就算出了我们最终的最大收益。</p>
+<p><strong>详细思路：</strong><br>首先看如下这张表，其含义是：</p>
+<ul>
+<li>第一行表示当天价格和前一天价格的差价</li>
+<li>第二行表示当前累计的收益，如果小于0时，则归零。起到辅助第三行的作用</li>
+<li>第三行表示最大收益，也就是我们要求的答案</li>
+</ul>
+<p>问题分阶段：第一列表示，假如只有前两天有买卖机会，最大收益是多少？第二列表示，假如只有前三天的有机会……<br>阶段有依赖：每一次算出的答案都可以依赖于前一次的答案，因此避开了许多重复操作。所谓的依赖，从这张表来看，就是<code>最大收益[i]=max(当前累积[i],最大收益[i-1]),(i&gt;0)</code><br>注意：这里只是为了方便说明，本文的代码中并没有用数组实现，而是直接使用了一个变量进行存储<br><img src="https://github.com/boomboomchen/markdownImages/blob/master/1.14.jpg?raw=true" alt=""></p>
+<p>我们需要做的，就是求出这张表。</p>
+<h4 id="3-2-3-代码实现"><a href="#3-2-3-代码实现" class="headerlink" title="3.2.3 代码实现"></a>3.2.3 代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] getByDynamicProgramming(<span class="keyword">int</span>[] prices) &#123;</span><br><span class="line">		<span class="keyword">int</span>[] changes = <span class="keyword">new</span> <span class="keyword">int</span> [prices.length-<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;changes.length;i++) &#123;</span><br><span class="line">			changes[i] = prices[i+<span class="number">1</span>]-prices[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> maxSum = changes[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">int</span> currentMaxSum = changes[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">int</span> startIndex =<span class="number">0</span>,endIndex =<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> currentIndex=<span class="number">1</span>; currentIndex&lt;changes.length; currentIndex++) &#123;</span><br><span class="line">		<span class="comment">/*核心代码*/</span></span><br><span class="line">			<span class="keyword">if</span>(currentMaxSum&lt;=<span class="number">0</span>) &#123;<span class="comment">//如果累积小于零</span></span><br><span class="line">				currentMaxSum = changes [currentIndex];<span class="comment">//把当前累计设置为价格变化</span></span><br><span class="line">				currentStartIndex = currentIndex;<span class="comment">//暂时保存，直到最大收益值变化，再将其赋值给买入时间</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				currentMaxSum += changes[currentIndex];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(currentMaxSum&gt;maxSum) &#123;<span class="comment">//如果当前累积大于最大收益</span></span><br><span class="line">				maxSum = currentMaxSum;<span class="comment">//把当前累积赋值给最大收益</span></span><br><span class="line">				startIndex = currentStartIndex;</span><br><span class="line">				endIndex = currentIndex;<span class="comment">//设置为这一天买入</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> [] answer = &#123;maxSum, startIndex, endIndex+<span class="number">1</span>&#125;;</span><br><span class="line">		<span class="keyword">return</span> answer;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-4-算法复杂度"><a href="#3-2-4-算法复杂度" class="headerlink" title="3.2.4 算法复杂度"></a>3.2.4 算法复杂度</h4><p>Θ(n)</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-06-29</span><i class="fa fa-tag"></i><a class="tag" href="/tags/algorithm/" title="algorithm">algorithm </a><a class="tag" href="/tags/Dynamic-Programming/" title="Dynamic Programming">Dynamic Programming </a><a class="tag" href="/tags/Maximum-Subarray/" title="Maximum Subarray">Maximum Subarray </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://boomboomchen.github.io/2020/06/29/算法之10动态规划解决最大子串和问题/,yuling,算法之10动态规划解决最大子串和问题,;" target="_blank" rel="noopener"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2020/06/29/%E7%AE%97%E6%B3%95%E4%B9%8B11%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E8%B7%B3%E8%B7%83%E9%97%AE%E9%A2%98/" title="算法之11动态规划解决跳跃问题">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2020/06/29/%E7%AE%97%E6%B3%95%E4%B9%8B9%E5%88%86%E6%B2%BB%E6%B3%95%E8%AF%A6%E8%A7%A3%E4%BA%8C%E7%BB%B4%E6%9C%80%E8%BF%91%E7%82%B9%E5%AF%B9%E9%97%AE%E9%A2%98/" title="算法之9分治法详解二维最近点对问题">下一篇</a></li></ul></div><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js?v=undefined"></script><script>var valine = new Valine({
+  el:'#vcomments',
+  notify:false || false, 
+  verify:false|| false, 
+  app_id:'AvFdT82c2CbjAhhwEoGoBEVa-gzGzoHsz# your leancloud appid',
+  app_key:'egmUn2RYgj61d9f7EbGQrX4l',
+  placeholder:'Just go it',
+  path: window.location.pathname,
+  avatar:'wavatar'
+})</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":1}});</script></body></html>
